@@ -1,0 +1,10 @@
+instructions for partner
+also reminder to delete this txt file after finish project
+
+put css in the css folder in src/main/ressources/static/css
+
+to run the program just execute the ToDoApplication in the java folder
+
+then to see the page go to Localhost:5050
+
+to see changes don't forget to stop and run the program again then reload page
