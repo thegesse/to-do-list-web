@@ -13,7 +13,6 @@ public class ListController {
     private final List<Task> taskList = new ArrayList<>();
     private int currentId = 0;
 
-
     @PostMapping
     public Task addTask(@RequestBody Task task) {
         task.setId(++currentId);
@@ -21,7 +20,7 @@ public class ListController {
         return task;
     }
 
-    @DeleteMapping("/{Id}")
+    @DeleteMapping("/{id}")
     public void deleteTask(@PathVariable int id) {
         taskList.removeIf(task -> task.getId() == id);
     }
