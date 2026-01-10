@@ -52,13 +52,18 @@ async function fetchAndDisplay() {
     tasks.forEach(task => {
 
         const div = document.createElement("div");
+        div.classList.add("task-item");
 
         const title = document.createElement("strong");
+        title.classList.add("task-title");
         title.textContent = task.name;
 
-        const desc = document.createTextNode(`: ${task.description || ''}`);
+        const desc = document.createElement("span");
+        desc.classList.add("task-desc");
+        desc.textContent = `: ${task.description || ''}`;
 
         const deleteButton = document.createElement("button");
+        deleteButton.classList.add("delete-btn");
         deleteButton.textContent = "Supprimer";
 
 
