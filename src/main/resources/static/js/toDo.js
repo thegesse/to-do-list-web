@@ -45,9 +45,8 @@ async function fetchAndDisplay() {
     const response = await fetch("/tasks");
     const tasks = await response.json();
 
-    while (listContainer.firstChild) {
-        listContainer.removeChild(listContainer.firstChild);
-    }
+    listContainer.innerHTML = "";
+
 
     tasks.forEach(task => {
 
