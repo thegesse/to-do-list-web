@@ -1,6 +1,7 @@
 package com.goose.todo.controller;
 
 import com.goose.todo.model.Task;
+import com.goose.todo.service.TaskService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -10,25 +11,24 @@ import java.util.List;
 @RequestMapping("/tasks")
 @CrossOrigin(origins = "*")
 public class ListController {
-    private final List<Task> taskList = new ArrayList<>();
-    private int currentId = 0;
+    private final TaskService taskService;
+
+    public ListController(TaskService taskService) {
+        this.taskService = taskService;
+    }
 
     @PostMapping
     public Task addTask(@RequestBody Task task) {
-        task.setId(++currentId);
-        taskList.add(task);
-        return task;
+        return taskService.addTask(task);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTask(@PathVariable int id) {
-        taskList.removeIf(task -> task.getId() == id);
+    public void deleteTask(@PathVariable Integer id) {
+        taskService.deleteTask(id);
     }
 
     @GetMapping
-    public List<Task> getAllTasks() {
-        return taskList;
+    public List<Task> getTasks() {
+        return taskService.getAllTasks();
     }
-
-
 }
